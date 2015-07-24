@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+	<h:head>
+		<title>
+			<h:outputText value="Criar Senha" />
+		</title>
+		<h:outputStylesheet library="css" name="estilo.css" />
+	</h:head> 
+	<body> 
+		<h:form id="form">
+			<f:event listener="#{senhaBean.validateSenha}" type="postValidate" />
+			
+			<h:panelGrid width="50%" cellspacing="1" cellpadding="1" border="0" columns="2">
+				#{msgs.senha}
+				<h:inputSecret id="senha" label="#{msgs.senha}" size="8" maxlength="8" value="#{senhaBean.senha}" >
+					<f:validateRequired />
+				</h:inputSecret>
+				
+				#{msgs.confirmar}
+				<h:inputSecret id="confirmar" label="#{msgs.confirmar}" size="8" maxlength="8" rendered="true" value="#{senhaBean.confirmar}" >
+					<f:validateRequired />
+				</h:inputSecret>
+			</h:panelGrid>
+			
+			<h:commandButton action="#{senhaBean.criarSenha}" value="Criar Senha" />
+			<p/>
+			<h:messages layout="line" style="color: red;"/>
+		</h:form>
+	</body> 
+</html>
