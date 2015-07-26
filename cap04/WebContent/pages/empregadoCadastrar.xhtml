@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+	<h:head>
+		<title>
+			<h:outputText value="#{msgs.tituloEmpregado}" />
+		</title>
+		<h:outputStylesheet library="css" name="estilo.css" />
+	</h:head> 
+	
+	<body> 
+		<h2>
+			<h:outputText value="#{msgs.tituloEmpregado}" />
+		</h2>
+		
+		<h:form id="form">
+			<h:panelGrid width="100%" cellspacing="1" cellpadding="1" border="0" columns="3" style="text-align: left;">
+				#{msgs.nome}
+				<h:inputText id="nome" label="#{msgs.nome}" size="50" maxlength="100" required="true" value="#{empregadoBean.nome}" />
+				<h:message for="nome"/>
+				
+				#{msgs.email}
+				<h:inputText id="email" label="#{msgs.email}" size="50" maxlength="100" required="true" value="#{empregadoBean.email}" />
+				<h:message for="email"/>
+				
+				#{msgs.telefone}
+				<h:inputText id="telefone" label="#{msgs.telefone}" size="14" maxlength="14" required="true" value="#{empregadoBean.telefone}" />
+				<h:message for="telefone"/>
+				
+				#{msgs.status}
+				<h:selectOneMenu id="status" label="#{msgs.status}" required="true" value="#{empregadoBean.status}">
+					<f:selectItem itemLabel="" itemValue=""/>
+					<f:selectItem itemLabel="Ativo" itemValue="A"/>
+					<f:selectItem itemLabel="Inativo" itemValue="I"/>
+				</h:selectOneMenu>
+				<h:message for="status"/>
+			</h:panelGrid>
+			
+			<br />
+			
+			<h:panelGrid width="70%" cellpadding="0" cellspacing="0" border="0" columns="1" style="text-align: center;">
+				<h:panelGroup>
+					<h:commandButton action="#{empregadoBean.cadastrar}" value="#{msgs.btCadastrar}" style="width: 100px;" />
+					
+					<h:outputText value="&nbsp;" />
+					
+					<h:commandButton action="#{empregadoBean.cancelar()}" value="#{msgs.btCancelar}" immediate="true" style="width: 100px;" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+		
+		<ui:debug hotkey="a"/>
+	</body> 
+
+</html>

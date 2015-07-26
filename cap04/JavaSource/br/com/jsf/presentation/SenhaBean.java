@@ -32,7 +32,7 @@ public class SenhaBean {
 			ResourceBundle bundle = ResourceBundle.getBundle("br.com.jsf.resource.ApplicationResource", context.getViewRoot().getLocale());
 			String msg = bundle.getString("message.senha.erro");
 			
-			FacesMessage mensagem = new FacesMessage();
+			FacesMessage mensagem = new FacesMessage(msg);
 			mensagem.setSeverity(FacesMessage.SEVERITY_INFO);
 			
 			context.addMessage(null, mensagem);
