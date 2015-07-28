@@ -26,6 +26,20 @@
 				<h:inputText id="email" label="#{msgs.email}" size="50" maxlength="100" required="true" value="#{empregadoBean.email}" />
 				<h:message for="email"/>
 				
+				#{msgs.estado}
+				<h:selectOneMenu id="estado" value="#{empregadoBean.estado}" valueChangeListener="#{empregadoBean.montarListaCidades}"
+					onchange="submit()" immediate="true" >
+					<f:selectItem itemLabel="Selecione..." itemValue="-1" />
+					<f:selectItems value="#{empregadoBean.estados}" />
+				</h:selectOneMenu>
+				<h:message for="estado" />
+				
+				#{msgs.cidade}
+				<h:selectOneMenu id="cidade" value="#{empregadoBean.cidade}">
+					<f:selectItems value="#{empregadoBean.cidades}" />
+				</h:selectOneMenu>
+				<h:message for="cidade" />
+				
 				#{msgs.telefone}
 				<h:inputText id="telefone" label="#{msgs.telefone}" size="14" maxlength="14" required="true" value="#{empregadoBean.telefone}" />
 				<h:message for="telefone"/>
